@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+	<head>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/$.simplate.js"></script>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+
+	<body>
+
+		<div class="test"></div>
+
+		<script>
+			(function ($) {
+				'use strict';
+				var dom,
+					data = {
+						page: {
+							title: 'ページタイトル',
+							lead: 'リード文',
+							section: {
+								title: 'セクションタイトル',
+								lead: 'セクションリード文',
+							}
+						}
+					}
+
+				$.ajax({
+					url: "domData.html"
+				}).done(function (domData) {
+					$('.test').simplate(domData, data);
+				});
+			}(jQuery));
+		</script>
+	</body>
+
+</html>

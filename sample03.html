@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+	<head>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/$.simplate.js"></script>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+
+	<body>
+
+		<div class="test"></div>
+
+		<script>
+			(function ($) {
+				'use strict';
+				$.when(
+					$.ajax({url: "domData.html"}),
+					$.ajax({url: "object.json"})
+				).done(function (domData, data) {
+					$('.test').simplate(domData[0], data[0]);
+				});
+			}(jQuery));
+		</script>
+	</body>
+
+</html>
