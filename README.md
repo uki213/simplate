@@ -1,18 +1,18 @@
 # simplate
 simpleなテンプレートエンジン 「 $.simplate.js 」
 
-    var dom = '<p>{$ test }</p><p>{$ sample.test_A }</p><p>{$ sample.test_B.test }</p><p>{$ test }</p>',
-        data = {
-            test: 'test_OK',
-            sample: {
-                test_A: 'sample_test_A_OK',
-                test_B: {
-                    test:"sample_test_B_OK"
-                }
-            }
-        }
-    
-    $('.test').simplate(dom, data);
+	var dom = '<p>{$ test }</p><p>{$ sample.test_A }</p><p>{$ sample.test_B.test }</p><p>{$ test }</p>',
+		data = {
+		test: 'test_OK',
+		sample: {
+			test_A: 'sample_test_A_OK',
+			test_B: {
+				test:"sample_test_B_OK"
+			}
+		}
+	}
+
+$('.test').simplate(dom, data);
 
 domにはテンプレート変数を使用したHTMLが入ります。<br>
 テンプレート変数は {$ } で囲まれた部分になります。<br>
