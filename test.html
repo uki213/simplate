@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="$.simplate.js"></script>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="test"></div>
+
+    <script>
+        (function ($) {
+            'use strict';
+            var dom = '<p>{$ results.apiVersion }</p><p>{$ results.errMsg }</p><p>{$ results.responseDatetime.test }</p><p>{$ results.returnCode }</p>',
+                data = {
+                    results: {
+                        apiVersion: "1.00",
+                        returnCode: "2001",
+                        errMsg: "一定時間操作がないか、なんらかのエラーが起きた可能性があるため、自動的にログアウトしました。再度ログインを行ってください。",
+                        responseDatetime: {
+                            test:"20150907143753"
+                        }
+                    }
+                }
+
+            $('.test').simplate(dom, data);
+
+        }(jQuery));
+    </script>
+</body>
+
+</html>
