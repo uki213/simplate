@@ -15,14 +15,13 @@
     <script>
         (function ($) {
             'use strict';
-            var dom = '<p>{$ results.apiVersion }</p><p>{$ results.errMsg }</p><p>{$ results.responseDatetime.test }</p><p>{$ results.returnCode }</p>',
+            var dom = '<p>{$ test }</p><p>{$ sample.test_A }</p><p>{$ sample.test_B.test }</p><p>{$ test }</p>',
                 data = {
-                    results: {
-                        apiVersion: "1.00",
-                        returnCode: "2001",
-                        errMsg: "一定時間操作がないか、なんらかのエラーが起きた可能性があるため、自動的にログアウトしました。再度ログインを行ってください。",
-                        responseDatetime: {
-                            test:"20150907143753"
+                    test: 'test_OK',
+                    sample: {
+                        test_A: 'sample_test_A_OK',
+                        test_B: {
+                            test:"sample_test_B_OK"
                         }
                     }
                 }
