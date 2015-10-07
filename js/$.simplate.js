@@ -9,7 +9,7 @@
 */
 (function ($) {
 	'use strict';
-	$.fn.simplate = function (domData, objectData) {
+	$.fn.simplate = function (domData, objectData, callback) {
 		var i,
 			j,
 			exportText, // 最終出力用
@@ -32,5 +32,10 @@
 			domData = domData.replace(RegExReplce, exportText);
 		}
 		$(this).html(domData);
+		$(this).ready(function () {
+			if (typeof(callback) === 'function'){
+				callback();
+			}
+		});
 	};
 }(jQuery));

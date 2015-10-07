@@ -2,7 +2,7 @@
 <html lang="ja">
 
 	<head>
-		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="js/$.simplate.js"></script>
 		<meta charset="UTF-8">
 		<title>simplate</title>
@@ -11,12 +11,74 @@
 	<body>
 		<h1>$.simplate.js</h1>
 
+
+		<h2>概要</h2>
+
+		<h3>simpleなテンプレートエンジン 「 $.simplate.js 」</h3>
+		<p>
+			simplateは、simpleで小型のtemplate pluginです。<br>
+			大掛かりなフレームワークを導入するほどでも無い小規模な案件で、簡単にテンプレート機能を実装することが出来ます。
+		</p>
+		<ul>
+			<li>jQueryプラグインの形式で記述できるので、初心者でも簡単</li>
+			<li>繰り返しの様な複雑な処理はできない</li>
+			<li>実行されると一度だけ書き換える。常にMODELを監視するような高機能は持ち合わせない</li>
+		</ul>
+
+		<h2>必要とするもの</h2>
+		<ul>
+			<li><a href="https://jquery.com/" target="_blank">jQuery</a></li>
+		</ul>
+
+		<h2>使用法</h2>
+		<blockquote>
+			<pre><code class="sampleCode">
+				<script type="text/html" id="sampleCode">
+var dom = '<p>{$ test }</p><p>{$ sample.test_A }</p><p>{$ sample.test_B.test }</p><p>{$ test }</p>';
+var data = {
+	test: 'test_OK',
+	sample: {
+		test_A: 'sample_test_A_OK',
+		test_B: {
+		test:"sample_test_B_OK"
+		}
+	}
+}
+				</script>
+			</code></pre>
+		</blockquote>
+		<p>
+			domにはテンプレート変数を使用したHTMLが入ります。<br>
+			テンプレート変数は {$ } で囲まれた部分になります。<br>
+			<br>
+			テンプレート変数の中の記述は通常の配列と同様に書けます。（ブラケット表記は不可）<br>
+			<br>
+			$(targetDom).simplate(dom, data, callback);<br>
+			目的のDOM(targetDom)に対して、domとobjectを指定すると整形されたhtmlで上書きします。<br>
+			callbackは省略可能。
+		</p>
+
+
+		<h2>デモ</h2>
+
 		<ul>
 			<li><a href="sampleCode/sample01.html">基本サンプル</a></li>
 			<li><a href="sampleCode/sample02.html">DOMデータをajaxで取得するサンプル</a></li>
 			<li><a href="sampleCode/sample03.html">DOMデータとobject両方をajaxで取得するサンプル</a></li>
 		</ul>
 
+		<h2>LICENCE</h2>
+		<p>
+			自由。ただしこのプログラム単体そのもので利益をえるような行為はNG
+		</p>
+
+
+
 	</body>
+
+	<script>
+		console.log($(sampleCode).html())
+		$('.sampleCode').text($(sampleCode).html());
+	</script>
 
 </html>
