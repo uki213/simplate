@@ -33,7 +33,7 @@
 		}
 		$(this).html(domData);
 		$(this).ready(function () {
-			if (typeof(callback) === 'function'){
+			if (typeof (callback) === 'function') {
 				callback();
 			}
 		});
