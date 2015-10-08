@@ -1,62 +1,79 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-	<head>
-		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src="js/$.simplate.js"></script>
-		<meta charset="UTF-8">
-		<title>simplate</title>
-	</head>
-
-	<body>
-		<h1><a href="js/$.simplate.js">$.simplate.js</a></h1>
-
-
-		<h2>概要</h2>
-
-		<h3>simpleなテンプレートエンジン 「 <a href="js/$.simplate.js">$.simplate.js</a> 」</h3>
-		<p>
-			simplateは、simpleで小型のtemplate pluginです。<br>
-			大掛かりなフレームワークを導入するほどでも無い小規模な案件で、簡単にテンプレート機能を実装することが出来ます。
-		</p>
-		<ul>
-			<li>jQueryプラグインの形式で記述できるので、初心者でも簡単</li>
-			<li>繰り返しの様な複雑な処理はできない</li>
-			<li>実行されると一度だけ書き換える。常にMODELを監視するような高機能は持ち合わせない</li>
-		</ul>
-
-		<h2>必要とするもの</h2>
-		<ul>
-			<li><a href="https://jquery.com/" target="_blank">jQuery</a></li>
-		</ul>
-
-		<h2>使用法</h2>
-		<blockquote>
-			<pre><code class="sampleCode">
-				<script type="text/html" id="sampleCode">
-var dom = '<p>{$ test }</p><p>{$ sample.test_A }</p><p>{$ sample.test_B.test }</p><p>{$ test }</p>';
-var data = {
-	test: 'test_OK',
-	sample: {
-		test_A: 'sample_test_A_OK',
-		test_B: {
-		test:"sample_test_B_OK"
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>simplate</title>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<!-- -->
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet" type="text/css">
+	<style>
+		* {
+			font-family: 'Ubuntu Mono', 'YuGothic', 'Yu Gothic', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
 		}
-	}
-}
-				</script>
-			</code></pre>
-		</blockquote>
-		<p>
-			domにはテンプレート変数を使用したHTMLが入ります。<br>
-			テンプレート変数は {$ } で囲まれた部分になります。<br>
-			<br>
-			テンプレート変数の中の記述は通常の配列と同様に書けます。（ブラケット表記は不可）<br>
-			<br>
-			$(targetDom).simplate(dom, data, callback);<br>
-			目的のDOM(targetDom)に対して、domとobjectを指定すると整形されたhtmlで上書きします。<br>
-			callbackは省略可能。
-		</p>
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="page-header">
+			<h1><a href="js/$.simplate.js">$.simplate.js</a> <small>simpleなテンプレートエンジン</small></h1>
+		</div>
+
+		<section>
+			<h2>概要</h2>
+			<p>
+				simplateは、simpleで小型のtemplate pluginです。
+				<br> 大掛かりなフレームワークを導入するほどでも無い小規模な案件で、簡単にテンプレート機能を実装することが出来ます。
+			</p>
+			<ul>
+				<li>jQueryプラグインの形式で記述できるので、初心者でも簡単</li>
+				<li>繰り返しの様な複雑な処理はできない</li>
+				<li>実行されると一度だけ書き換える。常にMODELを監視するような高機能は持ち合わせない</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>必要とするもの</h2>
+			<ul>
+				<li><a href="https://jquery.com/" target="_blank">jQuery</a></li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>使用法</h2>
+			<section>
+				<h3>プラグインとして利用する</h3>
+				<pre class="sampleCode">$(targetDom).simplate(dom, data, callback);</pre>
+				<p>
+					domにはテンプレート変数を使用したHTMLが入ります。<br>
+					テンプレート変数は {$ } で囲まれた部分になります。<br>
+					テンプレート変数の中の記述は通常の配列と同様に書けます。（ブラケット表記は不可）
+				</p>
+				<p>
+					目的のDOM(targetDom)に対して、domとobjectを指定すると整形されたhtmlで上書きします。<br>
+					callbackは省略可能。
+				</p>
+			</section>
+			<section>
+				<h3>関数として利用する</h3>
+				<pre class="sampleCode">var hoge = $.simplate(dom, data);</pre>
+				<p>
+					通常の関数としても使用できます。<br>
+					その場合、作成されたdomはreturnで戻されます。<br>
+					上記のサンプルの場合はhogeの中にdomの内容が格納されます。
+				</p>
+			</section>
+		</section>
+
+
+
 
 
 		<h2>デモ</h2>
@@ -74,11 +91,16 @@ var data = {
 
 
 
-	</body>
 
-	<script>
-		console.log($(sampleCode).html())
-		$('.sampleCode').text($(sampleCode).html());
-	</script>
+	</div>
+
+
+</body>
+
+<script>
+	$('.sampleCode').each(function () {
+		$(this).html($(this).html().replace(/\</g, '&lt;').replace(/\>/g, '&gt;'));
+	})
+</script>
 
 </html>
