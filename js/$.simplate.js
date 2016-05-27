@@ -16,8 +16,8 @@
 			extractionVariable, // テンプレート変数抽出用
 			substitutionArray, // テンプレート置き換え用
 			association,
-			RegExPattern = /\{\$\s*(.*?)\s*\}/g,
-			RegExReplce = /\{\$\s*(.*?)\s*\}/;
+			RegExPattern = /<!--\{\s*(.*?)\s*\}-->/g,
+			RegExReplce = /<!--\{\s*(.*?)\s*\}-->/;
 
 		// 引数の調整
 		domData = String(domData);
@@ -44,7 +44,7 @@
 	$.fn.simplate = function (domData, objectData, callback) {
 		domData = $.simplate(domData, objectData);
 
-		$(this).html(domData);
+		$(this).replaceWith(domData);
 		$(this).ready(function () {
 			// callback関数の実行
 			if (typeof (callback) === 'function') {

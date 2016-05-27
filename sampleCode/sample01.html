@@ -15,7 +15,7 @@
     <script>
         (function ($) {
             'use strict';
-            var dom = '<p>{$ test }</p><p>{$ sample.test_A }</p><p>{$ sample.test_B.test }</p><p>{$ test }</p>',
+			var dom = '<p><!--{ test }--></p><p><!--{ sample.test_A }--></p><p><!--{ sample.test_B.test }--></p><p><!--{ test }--></p>',
                 data = {
                     test: 'test_OK',
                     sample: {
