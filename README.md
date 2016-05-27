@@ -23,7 +23,7 @@ simplateは、simpleで小型のtemplate pluginです。
 
 	$(targetDom).simplate(dom, data, callback);
 domにはテンプレート変数を使用したHTMLが入ります。  
-テンプレート変数は {$ } で囲まれた部分になります。  
+テンプレート変数は <--{ }--> で囲まれた部分になります。  
 テンプレート変数の中の記述は通常の配列と同様に書けます。（ブラケット表記は不可）
 
 目的のDOM(targetDom)に対して、domとobjectを指定すると整形されたhtmlで上書きします。  
